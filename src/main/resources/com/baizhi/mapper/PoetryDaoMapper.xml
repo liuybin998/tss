@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.PoetryDao">
+    <resultMap id="pretryMap" type="Poetry">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="title" property="title"/>
+        <association property="poet" javaType="Poet">
+            <id column="pid" property="id"/>
+            <result column="pname" property="name"/>
+        </association>
+    </resultMap>
+
+    <select id="showAll" resultMap="pretryMap">
+        SELECT
+            p1.id id,
+            p1.content content,
+            p1.title title,
+            p2.id pid,
+            p2.NAME pname
+        FROM
+            poetries p1
+        LEFT JOIN poets p2 ON p1.poet_id = p2.id
+    </select>
+
+
+</mapper>
