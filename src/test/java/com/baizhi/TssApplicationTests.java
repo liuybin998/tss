@@ -144,6 +144,10 @@ public class TssApplicationTests {
             list.add(poetry);
 
         }
+
+
+
+
         for (Poetry poetry : list) {
             System.out.println("+++"+poetry.getTitle()+"--"+poetry.getPoet().getName()+"-"+poetry.getContent());
         }
